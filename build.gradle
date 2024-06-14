@@ -1,0 +1,42 @@
+plugins {
+    id 'org.springframework.boot' version '2.7.0'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '18'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // Use JUnit test framework.
+    testImplementation libs.junit
+
+    // This dependency is used by the application.
+    //implementation libs.guava
+}
+
+// Apply a specific Java toolchain to ease working on different environments.
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(18)
+    }
+}
+
+//application {
+//    // Define the main class for the application.
+//    mainClass = 'org.example.App'
+//}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
